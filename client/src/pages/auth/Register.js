@@ -1,10 +1,21 @@
 import React, { useState } from 'react'
+import { auth } from '../../firebase'
+import { toast } from 'react-toastify'
 
 const Register = () => {
 
   const [email, setEmail] = useState("");
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const config = {
+      url: process.env.REACT_APP_REGISTER_REDIRECT_URL,
+      handleCodeInApp: true
+    }
+    await auth.sendSignInLinkToEmail(email, config);
+    toast.success(`Email is sent to ${email}. Click the link to complete registration`); // popup for registration
+    window.localStorage.setItem('emailForRegistration', email); // So that email can be fetched at time of registration (after landing reg page).
+    setEmail(''); // After registration
 
   }
 
