@@ -9,7 +9,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const config = {
-      url: process.env.REACT_APP_REGISTER_REDIRECT_URL,
+      url: "http://localhost:3000/register/complete",
       handleCodeInApp: true
     }
     await auth.sendSignInLinkToEmail(email, config);
@@ -20,7 +20,7 @@ const Register = () => {
   }
 
   const registerForm = () => (<form onSubmit={handleSubmit}>
-    <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus />
+    <input type="email" className="form-control" placeholder="Enter Email Address" value={email} onChange={(e) => setEmail(e.target.value)} autoFocus />
     <button type="submit" className="btn btn-raised mt-3">
       Register
     </button>
