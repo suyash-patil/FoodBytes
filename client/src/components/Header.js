@@ -26,7 +26,7 @@ const Header = ({ user, setUser }) => {
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
       <Item key="home" icon={<HomeOutlined />}>
-        <Link to="/" >Home</Link>
+        <Link to="/" >Home - {JSON.stringify(user)}</Link>
       </Item>
 
       <Item key="register" icon={<UserAddOutlined />} className="float-right">
